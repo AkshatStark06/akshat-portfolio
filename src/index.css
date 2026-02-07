@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-intro {
+  animation: intro 2.5s ease-out;
+}
+
+/* Netflix-style intro enter */
+@keyframes netflixEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Netflix-style zoom exit */
+@keyframes netflixExit {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(20);
+    opacity: 0;
+  }
+}
+
+.animate-netflix-enter {
+  animation: netflixEnter 2s ease-out forwards;
+}
+
+.animate-netflix-exit {
+  animation: netflixExit 1.2s ease-in forwards;
+}
