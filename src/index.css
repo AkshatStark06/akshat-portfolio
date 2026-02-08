@@ -52,3 +52,11 @@
 .animate-netflix-exit {
   animation: netflixExit 1.2s ease-in forwards;
 }
+/* Netflix-style hidden scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
