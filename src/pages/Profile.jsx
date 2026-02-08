@@ -14,38 +14,37 @@ export default function Profile() {
   }, []);
 
   // ✅ DATA MUST BE HERE (NOT INSIDE JSX)
-  const skills = [
-    { title: "Python" },
-    { title: "SQL" },
-    { title: "Power BI" },
-    { title: "Excel" },
-    { title: "Machine Learning" },
-    { title: "Statistics" },
-  ];
+const skills = [
+  { title: "Python", image: "/images/python.jpg" },
+  { title: "SQL", image: "/images/sql.jpg" },
+  { title: "Power BI", image: "/images/powerbi.jpg" },
+  { title: "Excel", image: "/images/excel.jpg" },
+  { title: "Machine Learning", image: "/images/ml.jpg" },
+];
 
-  const projects = [
-    { title: "Fake News Detection" },
-    { title: "Sales Analytics Dashboard" },
-    { title: "Customer Churn Analysis" },
-  ];
+const projects = [
+  { title: "Fake News Detection", image: "/images/project1.jpg" },
+  { title: "Sales Analytics Dashboard", image: "/images/project2.jpg" },
+];
 
-  const contact = [
-    {
-      title: "Email Me",
-      onClick: () =>
-        (window.location.href = "mailto:your@email.com"),
-    },
-    {
-      title: "LinkedIn",
-      onClick: () =>
-        window.open("https://linkedin.com", "_blank"),
-    },
-    {
-      title: "GitHub",
-      onClick: () =>
-        window.open("https://github.com", "_blank"),
-    },
-  ];
+const contact = [
+  {
+    title: "Email Me",
+    image: "/images/contact.jpg",
+    onClick: () => (window.location.href = "mailto:your@email.com"),
+  },
+  {
+    title: "LinkedIn",
+    image: "/images/linkedin.jpg",
+    onClick: () => window.open("https://linkedin.com/in/yourprofile", "_blank"),
+  },
+  {
+    title: "GitHub",
+    image: "/images/github.jpg",
+    onClick: () => window.open("https://github.com/AkshatStark06", "_blank"),
+  },
+];
+
 
   // ✅ JSX ONLY BELOW
   return (
