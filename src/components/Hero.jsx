@@ -1,17 +1,17 @@
 function Hero() {
   return (
-    <section className="relative h-[75vh] flex items-center justify-center bg-gray-950 text-white">
-      <div className="relative z-10 text-center px-6">
-        <h1 className="text-5xl md:text-6xl font-extrabold">
+    <section className="relative h-[75vh] flex items-end pb-24 bg-gray-950 text-white overflow-hidden">
+      <div className="relative z-10 px-16 max-w-4xl">
+        <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
           Hi, I’m <span className="text-blue-500">Akshat</span>
         </h1>
 
-        <p className="mt-6 text-xl text-gray-400 max-w-2xl mx-auto">
+        <p className="mt-6 text-lg text-gray-400 max-w-3xl leading-relaxed">
           Data Analyst with an Electrical Engineering background, 
           building data-driven insights using Python, SQL, Power BI, and ML.
         </p>
 
-        <div className="mt-10 flex justify-center gap-6">
+        <div className="mt-10 flex gap-6">
           <a
             href="#projects"
             className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium"
