@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const PROFILES = [
   { key: "recruiter", label: "Recruiter" },
@@ -10,7 +10,18 @@ const PROFILES = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+
+  // Scroll-based navbar background (reference behavior)
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const switchProfile = (profileKey) => {
     setOpen(false);
@@ -18,30 +29,59 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300
+      ${isScrolled ? "bg-black/90" : "bg-black/40 backdrop-blur-md"}
+      border-b border-white/10`}
+    >
       <div className="w-full px-6 h-14 flex items-center justify-between">
         
-        {/* LEFT: NAME + TABS */}
-        <div className="flex items-center gap-5">
+        {/* LEFT: LOGO + NAV LINKS */}
+        <div className="flex items-center gap-6">
+          {/* LOGO / NAME */}
           <div
-            onClick={() => navigate("/")}
-            className="text-[#e50914] font-bold text-base tracking-wide cursor-pointer"
+            onClick={() => navigate("/browse")}
+            className="font-bebas text-[#e50914] text-[22px] tracking-[0.15em] cursor-pointer select-none"
           >
-            AKSHAT
+            AKSHAT SRIVASTAVA
           </div>
 
+          {/* NAV LINKS */}
           <ul className="flex items-center gap-6 text-sm text-white">
-            {["Home", "Professional", "Skills", "Projects", "Hire Me"].map(
-              (item) => (
-                <li
-                  key={item}
-                  className="cursor-pointer hover:text-white transition relative group"
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full"></span>
-                </li>
-              )
-            )}
+            <li>
+              <Link to="/browse" className="relative group">
+                Home
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/profile/recruiter" className="relative group">
+                Professional
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/skills" className="relative group">
+                Skills
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/projects" className="relative group">
+                Projects
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/contact" className="relative group">
+                Hire Me
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
+              </Link>
+            </li>
           </ul>
         </div>
 
