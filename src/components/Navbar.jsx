@@ -1,20 +1,29 @@
-function Navbar() {
+export default function Navbar() {
   return (
-    <nav className="fixed top-0 w-full bg-gray-950 border-b border-gray-800 z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-lg font-bold text-white">
-          Akshat<span className="text-blue-500">.</span>
-        </h1>
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+      <div className="w-full px-6 h-14 flex items-center">
+        
+        <div className="flex items-center gap-5">
+          <div className="text-[#e50914] font-bold text-base tracking-wide">
+            AKSHAT
+          </div>
 
-        <div className="space-x-6 text-gray-400">
-          <a href="#about" className="hover:text-white">About</a>
-          <a href="#skills" className="hover:text-white">Skills</a>
-          <a href="#projects" className="hover:text-white">Projects</a>
-          <a href="#contact" className="hover:text-white">Contact</a>
+          <ul className="flex items-center gap-6 text-sm text-white">
+            {["Home", "Professional", "Skills", "Projects", "Hire Me"].map(
+              (item) => (
+                <li
+                  key={item}
+                  className="cursor-pointer hover:text-white transition relative group"
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full"></span>
+                </li>
+              )
+            )}
+          </ul>
         </div>
+
       </div>
     </nav>
   );
 }
-
-export default Navbar;
