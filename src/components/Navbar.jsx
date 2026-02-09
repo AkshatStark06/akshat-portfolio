@@ -38,14 +38,13 @@ export default function Navbar() {
         
         {/* LEFT: LOGO + NAV LINKS */}
         <div className="flex items-center gap-6">
-          {/* LOGO / NAME */}
-          <div
-            onClick={() => navigate("/browse")}
-            className="font-bebas text-[#e50914] text-[22px] tracking-[0.15em] cursor-pointer select-none"
-          >
-            AKSHAT SRIVASTAVA
-          </div>
-
+          {/* LOGO */}
+          <img
+            src="/logo.svg"   // or "/logo.png"
+            alt="Akshat Srivastava Logo"
+            onClick={() => navigate("/")}
+            className="h-7 w-auto cursor-pointer hover:brightness-125 transition duration-300"
+          />
           {/* NAV LINKS */}
           <ul className="flex items-center gap-6 text-sm text-white">
             <li>
