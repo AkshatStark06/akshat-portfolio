@@ -4,14 +4,13 @@ export default function Tile({ title, image, onClick }) {
       onClick={onClick}
       className="
         relative
-        min-w-[220px] h-[130px]
-        rounded-lg
+        min-w-[240px] h-[140px]
+        rounded-xl
         overflow-hidden
         cursor-pointer
-        bg-gray-800
+        bg-neutral-900
         transform transition duration-300
-        hover:scale-110
-        hover:z-10
+
       "
     >
       {image && (
