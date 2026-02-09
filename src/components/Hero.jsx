@@ -1,7 +1,7 @@
 function Hero() {
   return (
-    <section className="h-[75vh] flex items-center justify-center bg-gray-950 text-white">
-      <div className="text-center px-6">
+    <section className="relative h-[75vh] flex items-center justify-center bg-gray-950 text-white">
+      <div className="relative z-10 text-center px-6">
         <h1 className="text-5xl md:text-6xl font-extrabold">
           Hi, I’m <span className="text-blue-500">Akshat</span>
         </h1>
@@ -27,6 +27,8 @@ function Hero() {
           </a>
         </div>
       </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+
     </section>
   );
 }
