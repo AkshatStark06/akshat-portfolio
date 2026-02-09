@@ -31,12 +31,12 @@ const contact = [
   {
     title: "Email Me",
     image: "/images/contact.jpg",
-    onClick: () => (window.location.href = "mailto:your@email.com"),
+    onClick: () => (window.location.href = "mailto:akshat12.cp@gmail.com"),
   },
   {
     title: "LinkedIn",
     image: "/images/linkedin.jpg",
-    onClick: () => window.open("https://linkedin.com/in/yourprofile", "_blank"),
+    onClick: () => window.open("https://linkedin.com/in/akshat-srivastava06/", "_blank"),
   },
   {
     title: "GitHub",
@@ -52,7 +52,7 @@ const contact = [
       <Navbar />
       <Hero />
 
-      <div className="mt-20 space-y-16">
+      <div className="mt-24 space-y-16">
         <Row
           title={`Today's Top Picks for ${type}`}
           items={skills}
