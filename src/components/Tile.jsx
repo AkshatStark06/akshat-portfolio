@@ -3,14 +3,15 @@ export default function Tile({ title, image, onClick }) {
     <div
       onClick={onClick}
       className="
-        relative
+        relative group
         min-w-[240px] h-[140px]
         rounded-xl
         overflow-hidden
         cursor-pointer
         bg-neutral-900
-        transform transition duration-300
-
+        transition-all duration-300 ease-out
+        hover:scale-[1.25]
+        hover:z-20
       "
     >
       {image && (
@@ -25,7 +26,9 @@ export default function Tile({ title, image, onClick }) {
       <div className="absolute inset-0 bg-black/40 hover:bg-black/20 transition" />
 
       {/* title */}
-      <span className="absolute bottom-3 left-3 text-sm font-medium">
+      <span className="absolute bottom-3 left-3 text-sm font-semibold
+                 opacity-90 group-hover:opacity-100 transition-opacity">
+
         {title}
       </span>
     </div>

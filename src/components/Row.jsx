@@ -7,7 +7,7 @@ export default function Row({ title, items }) {
         {title}
       </h2>
 
-      <div className="flex gap-4 px-12 overflow-x-auto scrollbar-hide">
+      <div className="flex gap-6 px-12 overflow-x-auto overflow-y-visible scrollbar-hide">
         {items.map((item, idx) => (
           <Tile
             key={idx}
