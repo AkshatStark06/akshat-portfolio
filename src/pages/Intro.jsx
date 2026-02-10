@@ -19,12 +19,12 @@ export default function Intro() {
       onClick={handleClick}
       className="h-screen bg-black flex items-center justify-center cursor-pointer overflow-hidden"
     >
-      <h1
-        className={`text-red-600 text-5xl md:text-6xl font-bold tracking-widest
+      <img
+        src="/logo_curved.svg"
+        alt="Akshat Srivastava"
+        className={`w-[260px] md:w-[340px] lg:w-[380px]
         ${exit ? "animate-netflix-exit" : "animate-netflix-enter"}`}
-      >
-        AKSHAT SRIVASTAVA
-      </h1>
+      />
     </div>
   );
 }

@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
           {/* LOGO */}
           <img
-            src="/logo.svg"   // or "/logo.png"
+            src="/logo_curved.svg"   // or "/logo.png"
             alt="Akshat Srivastava Logo"
             onClick={() => navigate("/")}
             className="h-7 w-auto cursor-pointer hover:brightness-125 transition duration-300"
