@@ -38,7 +38,7 @@ export default function Navbar() {
           
           {/* LOGO (SVG — SCALED LIKE REFERENCE) */}
           <div
-            onClick={() => navigate("/browse")}
+            onClick={() => navigate("/")}
             className="cursor-pointer select-none flex items-center overflow-visible"
           >
             <img
