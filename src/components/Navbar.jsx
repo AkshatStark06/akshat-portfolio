@@ -13,10 +13,10 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
-  // Scroll-based navbar background (reference behavior)
+  // Detect scroll for Netflix-style navbar
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      setIsScrolled(window.scrollY > 60);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -31,20 +31,21 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300
-      ${isScrolled ? "bg-black/90" : "bg-black/40 backdrop-blur-md"}
-      border-b border-white/10`}
+      ${isScrolled ? "bg-black" : "bg-transparent"}`}
     >
       <div className="w-full px-6 h-14 flex items-center justify-between">
         
         {/* LEFT: LOGO + NAV LINKS */}
         <div className="flex items-center gap-6">
+          
           {/* LOGO */}
           <img
-            src="/logo_curved.svg"   // or "/logo.png"
-            alt="Akshat Srivastava Logo"
+            src="/logo_curved.svg"
+            alt="Akshat Srivastava"
             onClick={() => navigate("/")}
-            className="h-7 w-auto cursor-pointer hover:brightness-125 transition duration-300"
+            className="h-7 w-auto cursor-pointer select-none"
           />
+
           {/* NAV LINKS */}
           <ul className="flex items-center gap-6 text-sm text-white">
             <li>
@@ -98,7 +99,7 @@ export default function Navbar() {
           </button>
 
           {open && (
-            <div className="absolute right-0 top-14 w-52 bg-black/95 backdrop-blur-md border border-white/10 rounded-md shadow-lg overflow-hidden">
+            <div className="absolute right-0 top-14 w-52 bg-black border border-white/10 rounded-md shadow-lg overflow-hidden">
               {PROFILES.map((profile) => (
                 <button
                   key={profile.key}
