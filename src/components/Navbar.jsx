@@ -13,12 +13,10 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
-  // Detect scroll for Netflix-style navbar
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
+      setIsScrolled(window.scrollY > 80);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -31,61 +29,51 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300
-      ${isScrolled ? "bg-black" : "bg-transparent"}`}
+      ${isScrolled ? "bg-black/90" : "bg-transparent"}`}
     >
-      <div className="w-full px-6 h-14 flex items-center justify-between">
+      <div className="w-full h-[76px] px-12 flex items-center justify-between">
         
-        {/* LEFT: LOGO + NAV LINKS */}
-        <div className="flex items-center gap-6">
+        {/* LEFT */}
+        <div className="flex items-center gap-12">
           
-          {/* LOGO */}
-          <img
-            src="/logo_curved.svg"
-            alt="Akshat Srivastava"
-            onClick={() => navigate("/")}
-            className="h-7 w-auto cursor-pointer select-none"
-          />
+          {/* LOGO (SVG — SCALED LIKE REFERENCE) */}
+          <div
+            onClick={() => navigate("/browse")}
+            className="cursor-pointer select-none flex items-center overflow-visible"
+          >
+            <img
+              src="/logo_curved.svg"
+              alt="Akshat Srivastava"
+              className="
+                w-[180px]
+                md:w-[200px]
+                h-auto
+                relative
+                top-[2px]
+              "
+            />
+          </div>
 
           {/* NAV LINKS */}
-          <ul className="flex items-center gap-6 text-sm text-white">
-            <li>
-              <Link to="/browse" className="relative group">
-                Home
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/profile/recruiter" className="relative group">
-                Professional
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/skills" className="relative group">
-                Skills
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/projects" className="relative group">
-                Projects
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/contact" className="relative group">
-                Hire Me
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
-              </Link>
-            </li>
+          <ul className="flex items-center gap-6 text-[14px] font-medium text-white">
+            {[
+              { label: "Home", path: "/browse" },
+              { label: "Professional", path: "/profile/recruiter" },
+              { label: "Skills", path: "/skills" },
+              { label: "Projects", path: "/projects" },
+              { label: "Hire Me", path: "/contact" },
+            ].map((item) => (
+              <li key={item.label}>
+                <Link to={item.path} className="relative group">
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#e50914] transition-all group-hover:w-full" />
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* RIGHT: PROFILE DROPDOWN */}
+        {/* RIGHT */}
         <div className="relative flex items-center">
           <button
             onClick={() => setOpen(!open)}
@@ -99,7 +87,7 @@ export default function Navbar() {
           </button>
 
           {open && (
-            <div className="absolute right-0 top-14 w-52 bg-black border border-white/10 rounded-md shadow-lg overflow-hidden">
+            <div className="absolute right-0 top-[76px] w-52 bg-black/95 backdrop-blur-md border border-white/10 rounded-md shadow-lg overflow-hidden">
               {PROFILES.map((profile) => (
                 <button
                   key={profile.key}
