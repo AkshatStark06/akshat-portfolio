@@ -2,15 +2,23 @@ function Hero() {
   return (
     <section className="relative h-[75vh] pt-24 flex items-end pb-24 bg-black text-white overflow-hidden">
       
-      {/* BACKGROUND IMAGE / VIDEO */}
+      {/* BACKGROUND VIDEO */}
       <div className="absolute inset-0 z-0">
-        {/* Use image for now */}
-        <img
-          src="/hero-bg.jpg"
-          alt="Hero background"
+        <video
           className="w-full h-full object-cover"
+          src="/hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
         />
       </div>
+
+      {/* DARK OVERLAY (for readability) */}
+      <div className="absolute inset-0 z-0 bg-black/50" />
+
+      {/* DARK GRADIENT OVERLAY (Netflix-style fade) */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
       {/* CONTENT */}
       <div className="relative z-10 px-16 max-w-5xl">
@@ -45,8 +53,6 @@ function Hero() {
         </div>
       </div>
 
-      {/* DARK GRADIENT OVERLAY */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
     </section>
   );
 }
