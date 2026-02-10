@@ -1,27 +1,25 @@
 function Hero() {
   return (
-    <section className="relative h-[75vh] pt-24 flex items-end pb-24 bg-black text-white overflow-hidden">
+    <section className="relative h-[75vh] pt-24 flex items-end pb-24 text-white overflow-hidden">
       
       {/* BACKGROUND VIDEO */}
-      <div className="absolute inset-0 z-0">
-        <video
-          className="w-full h-full object-cover"
-          src="/hero.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-      </div>
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
 
-      {/* DARK OVERLAY (for readability) */}
-      <div className="absolute inset-0 z-0 bg-black/50" />
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
 
-      {/* DARK GRADIENT OVERLAY (Netflix-style fade) */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+      {/* GRADIENT OVERLAY (Netflix style) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-20" />
 
       {/* CONTENT */}
-      <div className="relative z-10 px-16 max-w-5xl">
+      <div className="relative z-30 px-16 max-w-5xl">
         <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
           Akshat Srivastava –{" "}
           <span className="text-[#e50914]">Data Analyst</span>
