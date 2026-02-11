@@ -17,12 +17,16 @@ export default function Intro() {
   return (
     <div
       onClick={handleClick}
-      className="h-screen bg-black flex items-center justify-center cursor-pointer overflow-hidden"
+      className="h-screen bg-[#111111] flex items-center justify-center cursor-pointer overflow-hidden"
     >
       <img
-        src="/logo_curved.svg"
+        src="/logo_transparent3.png"
         alt="Akshat Srivastava"
-        className={`w-[260px] md:w-[340px] lg:w-[380px]
+        className={`w-[600px]
+          md:w-[750px]
+          lg:w-[900px]
+          object-contain
+          -translate-y-6
         ${exit ? "animate-netflix-exit" : "animate-netflix-enter"}`}
       />
     </div>

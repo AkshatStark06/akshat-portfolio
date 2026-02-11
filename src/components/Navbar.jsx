@@ -31,10 +31,10 @@ export default function Navbar() {
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300
       ${isScrolled ? "bg-black/90" : "bg-transparent"}`}
     >
-      <div className="w-full h-[76px] px-12 flex items-center justify-between">
+      <div className="w-full h-[76px] pl-1 md:pl-0 pr-6 flex items-center justify-between">
         
         {/* LEFT */}
-        <div className="flex items-center gap-12">
+        <div className="flex items-center gap-0">
           
           {/* LOGO (SVG — SCALED LIKE REFERENCE) */}
           <div
@@ -42,20 +42,19 @@ export default function Navbar() {
             className="cursor-pointer select-none flex items-center overflow-visible"
           >
             <img
-              src="/logo_curved.svg"
+              src="/logo_transparent3.png"
               alt="Akshat Srivastava"
               className="
-                w-[180px]
-                md:w-[200px]
+                w-[300px]
+                md:w-[320px]
                 h-auto
-                relative
-                top-[2px]
+                translate-y-[-2.5px]
               "
             />
           </div>
 
           {/* NAV LINKS */}
-          <ul className="flex items-center gap-6 text-[14px] font-medium text-white">
+          <ul className="flex items-center gap-8 text-[16px] font-medium text-white">
             {[
               { label: "Home", path: "/browse" },
               { label: "Professional", path: "/profile/recruiter" },
