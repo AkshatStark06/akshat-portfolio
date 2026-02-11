@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
-const PROFILES = [
-  { key: "recruiter", label: "Recruiter" },
-  { key: "developer", label: "Developer" },
-  { key: "stalker", label: "Stalker 😈" },
-  { key: "adventurer", label: "Adventurer" },
-];
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { profiles } from "../data/profiles"; // <-- IMPORTANT
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   const navigate = useNavigate();
+  const { type } = useParams(); // must match route: /profile/:type
+
+  const activeProfile = profiles[type] || profiles["recruiter"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +34,7 @@ export default function Navbar() {
         {/* LEFT */}
         <div className="flex items-center gap-0">
           
-          {/* LOGO (SVG — SCALED LIKE REFERENCE) */}
+          {/* LOGO */}
           <div
             onClick={() => navigate("/")}
             className="cursor-pointer select-none flex items-center overflow-visible"
@@ -44,12 +42,7 @@ export default function Navbar() {
             <img
               src="/logo_transparent3.png"
               alt="Akshat Srivastava"
-              className="
-                w-[300px]
-                md:w-[320px]
-                h-auto
-                translate-y-[-2.5px]
-              "
+              className="w-[300px] md:w-[320px] h-auto translate-y-[-2.5px]"
             />
           </div>
 
@@ -72,28 +65,33 @@ export default function Navbar() {
           </ul>
         </div>
 
-        {/* RIGHT */}
+        {/* RIGHT PROFILE BUTTON */}
         <div className="relative flex items-center">
           <button
             onClick={() => setOpen(!open)}
-            className="w-9 h-9 rounded-full overflow-hidden border border-white/20 hover:border-white transition"
+            className="w-9 h-9 rounded-md overflow-hidden border border-white/20 hover:border-white transition"
           >
             <img
-              src="/profile.png"
-              alt="Profile"
+              src={activeProfile.icon}
+              alt={activeProfile.name}
               className="w-full h-full object-cover"
             />
           </button>
 
           {open && (
-            <div className="absolute right-0 top-[76px] w-52 bg-black/95 backdrop-blur-md border border-white/10 rounded-md shadow-lg overflow-hidden">
-              {PROFILES.map((profile) => (
+            <div className="absolute right-0 top-[76px] w-56 bg-black/95 backdrop-blur-md border border-white/10 rounded-md shadow-lg overflow-hidden">
+              {Object.entries(profiles).map(([key, profile]) => (
                 <button
-                  key={profile.key}
-                  onClick={() => switchProfile(profile.key)}
-                  className="w-full px-4 py-3 text-left text-sm text-white hover:bg-white/10 transition"
+                  key={key}
+                  onClick={() => switchProfile(key)}
+                  className="w-full px-4 py-3 flex items-center gap-3 text-sm text-white hover:bg-white/10 transition"
                 >
-                  {profile.label}
+                  <img
+                    src={profile.icon}
+                    alt={profile.name}
+                    className="w-7 h-7 rounded-md object-cover"
+                  />
+                  {profile.name}
                 </button>
               ))}
             </div>
