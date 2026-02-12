@@ -1,72 +1,43 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Row from "../components/Row";
 import { useAudio } from "../context/AudioContext";
+import { profileConfig } from "../data/profileConfig";
 
 export default function Profile() {
   const { type } = useParams();
   const { playMusic } = useAudio();
+  const navigate = useNavigate();
 
   useEffect(() => {
     playMusic();
-  }, []);
+  }, [playMusic]);
 
-  // ✅ DATA MUST BE HERE (NOT INSIDE JSX)
-const skills = [
-  { title: "Python", image: "/images/python.jpg" },
-  { title: "SQL", image: "/images/sql.jpg" },
-  { title: "Power BI", image: "/images/powerbi.jpg" },
-  { title: "Excel", image: "/images/excel.jpg" },
-  { title: "Machine Learning", image: "/images/ml.jpg" },
-];
+  // Get rows dynamically based on profile type
+  const rows = profileConfig[type] || [];
 
-const projects = [
-  { title: "Fake News Detection", image: "/images/project1.jpg" },
-  { title: "Sales Analytics Dashboard", image: "/images/project2.jpg" },
-];
-
-const contact = [
-  {
-    title: "Email Me",
-    image: "/images/contact.jpg",
-    onClick: () => (window.location.href = "mailto:akshat12.cp@gmail.com"),
-  },
-  {
-    title: "LinkedIn",
-    image: "/images/linkedin.jpg",
-    onClick: () => window.open("https://linkedin.com/in/akshat-srivastava06/", "_blank"),
-  },
-  {
-    title: "GitHub",
-    image: "/images/github.jpg",
-    onClick: () => window.open("https://github.com/AkshatStark06", "_blank"),
-  },
-];
-
-
-  // ✅ JSX ONLY BELOW
   return (
     <>
       <Navbar />
-      <Hero />
+      <Hero profileType={type} />
 
-      <div className="mt-24 space-y-16">
-        <Row
-          title={`Today's Top Picks for ${type}`}
-          items={skills}
-        />
-
-        <Row
-          title="Projects"
-          items={projects}
-        />
-
-        <Row
-          title="Contact"
-          items={contact}
-        />
+      <div className="mt-24 space-y-16 px-6 md:px-12">
+        {rows.map((row, index) => (
+          <Row
+            key={index}
+            title={row.title}
+            items={row.items.map((item) => ({
+              ...item,
+              onClick: () => {
+                if (item.route) {
+                  navigate(item.route);
+                }
+              },
+            }))}
+          />
+        ))}
       </div>
     </>
   );

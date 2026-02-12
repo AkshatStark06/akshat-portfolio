@@ -3,16 +3,16 @@ export const profiles = {
     name: "Recruiter",
     icon: "/profile_logo1.png",
   },
-  developer: {
-    name: "Developer",
+  enthusiast: {
+    name: "AI Enthusiast",
     icon: "/profile_logo2.png",
   },
-  stalker: {
-    name: "Stalker",
+  engineering: {
+    name: "Fellow Engineer",
     icon: "/profile_logo3.png",
   },
-  adventurer: {
-    name: "Adventurer",
+  explorer: {
+    name: "Explorer",
     icon: "/profile_logo4.png",
   },
 };

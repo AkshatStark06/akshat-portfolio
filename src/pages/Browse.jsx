@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 const profiles = [
   { name: "Recruiter", type: "recruiter", icon: "/profile_logo1.png" },
-  { name: "Developer", type: "developer", icon: "/profile_logo2.png" },
-  { name: "Stalker", type: "stalker", icon: "/profile_logo3.png" },
-  { name: "Adventurer", type: "adventurer", icon: "/profile_logo4.png" },
+  { name: "AI Enthusiast", type: "enthusiast", icon: "/profile_logo2.png" },
+  { name: "Fellow Engineer", type: "engineering", icon: "/profile_logo3.png" },
+  { name: "Explorer", type: "explorer", icon: "/profile_logo4.png" },
 ];
 
 export default function Browse() {
